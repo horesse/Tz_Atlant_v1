@@ -1,0 +1,54 @@
+﻿@using TZ_ver2.Views.ViewModels
+
+@model SkeeperListViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="AV">
+    <a href="#dark" class="AddB">Добавить нового кладовщика</a>
+    <div class="vError">@Html.ValidationSummary()</div>
+</div>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Кладовщик</th>
+            <th>Кол-во деталей</th>
+            <th>Удаление</th>
+        </tr>
+        @{
+            var sk = Model.skeeper.ToArray();
+            var count = Model.count.ToArray();
+
+            for (var i = 0; i < count.Count(); i++)
+            {
+                @using (Html.BeginForm("DeleteSkeeper", "Skeepers", FormMethod.Post))
+                {
+                    <tr>
+                        <td>@sk[i].id @Html.Hidden("id", sk[i].id)</td>
+                        <td>@sk[i].name @Html.Hidden("name", sk[i].name)</td>
+                        <td>@count[i]</td>
+                        <td><input type="submit" name="delete" value="Удалить" /></td>
+                    </tr>
+                }
+            }
+
+        }
+    </table>
+    <div id="dark">
+        <div class="AddNew">
+            <h2>Новая запись</h2>
+            <a class="Exit" href="#">X</a>
+            @using (Html.BeginForm("AddSkeeper", "Skeepers", FormMethod.Post))
+            {
+                @Html.Label("Имя кладовщика")
+                @Html.TextBox("name");
+                <input type="submit" name="submit2" value="Добавить" />
+            }
+        </div>
+    </div>
+        
+
+

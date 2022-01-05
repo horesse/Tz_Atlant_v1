@@ -1,0 +1,89 @@
+﻿@using TZ_ver2.Views.ViewModels
+
+@model DetailsListViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="AV">
+    <a href="#dark" class="AddB">Добавить новую деталь</a>
+    <div class="vError">@Html.ValidationSummary()</div>
+</div>
+<div id="dark">
+    <div class="AddNew">
+        <h2>Новая запись</h2>
+        <a class="Exit" href="#">X</a>
+        <div class="form">
+            @using (Html.BeginForm("AddDetail", "Details", FormMethod.Post))
+            {
+                <div class="item">
+                    @Html.Label("Нумеклатурный код")
+                    @Html.TextBox("Num_code")
+                </div>
+                <div class="item">
+                    @Html.Label("Название детали")
+                    @Html.TextBox("name")
+                </div>
+                <div class="item">
+                    @Html.Label("Кол-во деталей")
+                    @Html.TextBox("count")
+                </div>
+                <div class="item">
+                    @Html.Label("Кладовщик")
+                    <select name="SkeeperID" id="SkeeperID">
+                        @{
+                            foreach (var skeeper in Model.currSkeeper)
+                            {
+                                <option>@skeeper.id</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="item">
+                    @Html.Label("Дата создания")
+                    <input type="date" placeholder="Дата создания" name="CreateDate" />
+                </div>
+                <input type="submit" name="submit2" value="Добавить" href="#"/>
+            }
+        </div>
+    </div>
+</div>
+    
+
+    <div class="space-for-table">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Номенклатурный код </th>
+                <th>Наименование</th>
+                <th>Количество</th>
+                <th>Кладовщик ID</th>
+                <th>Дата создания</th>
+                <th>Дата удаления</th>
+                <th>Удаление</th>
+            </tr>
+            @{
+                foreach (var detail in Model.AllDetails)
+                {
+                    <tr>
+                        @using (Html.BeginForm("DeleteDetail", "Details", FormMethod.Post))
+                        {
+                            <td>@detail.id @Html.Hidden("id", detail.id)</td>
+                            <td>@detail.Num_code @Html.Hidden("Num_code", detail.Num_code)</td>
+                            <td>@detail.name @Html.Hidden("name", detail.name)</td>
+                            <td>@detail.count @Html.Hidden("count", detail.count)</td>
+                            <td>@detail.SkeeperID @Html.Hidden("SkeeperID", detail.SkeeperID)</td>
+                            <td>@detail.CreateDate @Html.Hidden("CreateDate", detail.CreateDate)</td>
+                            <td>@detail.DeleteDate</td>
+                            <td>
+                                <input type="submit" name="delete" value="Удалить" />
+                            </td>
+                        }
+
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+

@@ -1,0 +1,106 @@
+.body {
+    
+}
+
+.AddNew1 {
+    background: red;
+    width: 500px;
+}
+
+.item {
+    padding: 5px;
+    display: inline-grid;
+    width: 100%;
+    color: blue;
+}
+
+input[type=text], select {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#dark {
+    background: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.AddNew {
+    position: relative;
+    display: block;
+    height: 550px;
+    width: 300px;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    color: #0000cc;
+    background: #fff;
+    border: 3px solid #0000cc;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+}
+
+.AddNew .Exit {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: red;
+    text-decoration: none;
+}
+
+#dark:target {
+    display: block;
+}
+
+button {
+    background: cornflowerblue;
+    color: white;
+}
+
+.vError {
+    padding-left: 12px;
+}
+
+.AV {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.AddB {
+    text-align: center;
+    width: auto;
+}
+
+.vError ul, .vError li {
+    color: red;
+    text-decoration: none;
+    list-style: none;
+    display: block;
+    padding: 0;
+    text-align: center;
+}
+
+table {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+table th, table td {
+    text-align: center;
+}
